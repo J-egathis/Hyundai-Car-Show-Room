@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #003082;
+    --color-black: #000000;
+    --color-slate: #60605B;
+    --color-platinum: #BFBAAF;
+  }
+
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom text selection styling */
+::selection {
+  background-color: #003082 !important;
+  color: #FFFFFF !important;
+}
+
+::-moz-selection {
+  background-color: #003082 !important;
+  color: #FFFFFF !important;
+}
+
+/* Custom select dropdown option highlight */
+select option:checked,
+select option:hover {
+  background-color: #003082 !important;
+  color: #FFFFFF !important;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #003082;
+  border-radius: 4px;
+}
+
+input[type="date"] {
+  color-scheme: light;
+  position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px;
+  filter: invert(12%) sepia(90%) saturate(1400%) hue-rotate(205deg);
+  transition: all 0.2s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  transform: scale(1.15);
+}

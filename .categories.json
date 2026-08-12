@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Hypercars & Supercars",
+    "subCategories": [
+      "Electric Track Specialists",
+      "V12 Atmospheric Mechanical",
+      "V8 Twin-Turbo Hybrids"
+    ]
+  },
+  {
+    "name": "Luxury SUVs",
+    "subCategories": [
+      "Autonomous Air Suspensions",
+      "Off-Road Armor Executives",
+      "Performance Hybrid Crossovers"
+    ]
+  },
+  {
+    "name": "Executive Sedans",
+    "subCategories": [
+      "Plug-in Hybrid Limousines",
+      "Armored VIP Express",
+      "Full Electric Long-Range"
+    ]
+  },
+  {
+    "name": "Grand Tourer Convertibles",
+    "subCategories": [
+      "Open-Top Electric GTs",
+      "Classic Roadster Classics",
+      "Sport Convertible Cruisers"
+    ]
+  }
+]

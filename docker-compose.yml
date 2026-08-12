@@ -1,0 +1,107 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: showroom_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: showroom_db
+      MYSQL_USER: showroom_user
+      MYSQL_PASSWORD: showroom_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:7-alpine
+    container_name: showroom_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
+  minio:
+    image: minio/minio:latest
+    container_name: showroom_minio
+    restart: always
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: miniopassword
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+
+  meilisearch:
+    image: getmeili/meilisearch:latest
+    container_name: showroom_meilisearch
+    restart: always
+    environment:
+      MEILI_MASTER_KEY: masterKey123
+    ports:
+      - "7700:7700"
+    volumes:
+      - meili_data:/meili_data
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: showroom_api
+    restart: always
+    ports:
+      - "3333:3333"
+    environment:
+      DATABASE_URL: "mysql://showroom_user:showroom_pass@mysql:3306/showroom_db"
+      REDIS_URL: "redis://redis:6379"
+      MEILI_HOST: "http://meilisearch:7700"
+      MEILI_KEY: "masterKey123"
+    depends_on:
+      - mysql
+      - redis
+      - meilisearch
+
+  storefront:
+    build:
+      context: .
+      dockerfile: apps/storefront/Dockerfile
+    container_name: showroom_storefront
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: "http://api:3333"
+
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+    container_name: showroom_admin
+    restart: always
+    ports:
+      - "3002:3002"
+    environment:
+      NEXT_PUBLIC_API_URL: "http://api:3333"
+
+  caddy:
+    image: caddy:latest
+    container_name: showroom_caddy
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - storefront
+      - admin
+      - api
+
+volumes:
+  mysql_data:
+  minio_data:
+  meili_data:

@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #003082;
+    --color-black: #000000;
+    --color-slate: #60605B;
+    --color-platinum: #BFBAAF;
+    --bg-white: #FFFFFF;
+    --bg-light: #BFBAAF;
+  }
+
+  body {
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom text selection styling */
+::selection {
+  background-color: #003082 !important;
+  color: #FFFFFF !important;
+}
+
+::-moz-selection {
+  background-color: #003082 !important;
+  color: #FFFFFF !important;
+}
+
+/* Custom select dropdown option highlight */
+select option:checked,
+select option:hover {
+  background-color: #003082 !important;
+  color: #FFFFFF !important;
+}
+
+/* Custom blueprint mesh background */
+.blueprint-grid {
+  background-color: #FFFFFF;
+  background-image: radial-gradient(circle at 50% 0%, rgba(0, 48, 130, 0.10), transparent 70%),
+                    linear-gradient(to right, rgba(96, 96, 91, 0.08) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(96, 96, 91, 0.08) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+}
+
+/* Custom glow utility */
+.glow-blue {
+  box-shadow: 0 0 25px rgba(0, 48, 130, 0.35);
+}
+
+.glow-platinum {
+  box-shadow: 0 0 25px rgba(191, 186, 175, 0.5);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFFFFF;
+}
+::-webkit-scrollbar-thumb {
+  background: #003082;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}

@@ -1,0 +1,51 @@
+/* =============================
+   responsive.css - Car Showroom
+   ============================= */
+
+/* Mobile-first */
+.container{width: min(var(--container), calc(100% - 2rem));}
+
+.nav-links{display:none}
+.hamburger{display:inline-flex;}
+
+.hero-grid{grid-template-columns: 1fr;}
+.hero-card{height: 420px;}
+.hero-glass-stats{position:static; margin-top: 1rem; width:100%; grid-template-columns: 1fr 1fr;}
+
+.filters-bar{grid-template-columns: 1fr;}
+.car-grid{grid-template-columns: 1fr;}
+.icon-grid{grid-template-columns: 1fr;}
+.stat-grid-4{grid-template-columns: 1fr 1fr;}
+.brand-grid{grid-template-columns: repeat(3, 1fr);}
+
+.contact-grid{grid-template-columns: 1fr;}
+.form-row{grid-template-columns: 1fr;}
+
+.config-grid{grid-template-columns: 1fr;}
+
+.gallery-grid{columns: 2;}
+
+.footer-grid{grid-template-columns: 1fr;}
+
+/* Tablet */
+@media (min-width: 700px){
+  .car-grid{grid-template-columns: repeat(2, 1fr)}
+  .brand-grid{grid-template-columns: repeat(4, 1fr)}
+  .gallery-grid{columns: 3;}
+  .stat-grid-4{grid-template-columns: repeat(4, 1fr)}
+  .icon-grid{grid-template-columns: repeat(2, 1fr)}
+}
+
+/* Laptop/Desktop */
+@media (min-width: 1024px){
+  .nav-links{display:flex}
+  .hamburger{display:none}
+  .hero-grid{grid-template-columns: 1.1fr .9fr;}
+  .hero-glass-stats{position:absolute;}
+  .car-grid{grid-template-columns: repeat(3, 1fr)}
+  .icon-grid{grid-template-columns: repeat(3, 1fr)}
+  .brand-grid{grid-template-columns: repeat(5, 1fr)}
+  .gallery-grid{columns: 3;}
+  .footer-grid{grid-template-columns: 1.2fr 1fr 1fr;}
+}
+

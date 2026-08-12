@@ -1,0 +1,11 @@
+showroom.local {
+    reverse_proxy storefront:3000
+}
+
+admin.showroom.local {
+    reverse_proxy admin:3002
+}
+
+api.showroom.local {
+    reverse_proxy api:3333
+}

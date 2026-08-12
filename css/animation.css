@@ -1,0 +1,39 @@
+/* =============================
+   animation.css - reusable keyframes
+   ============================= */
+
+/* Fade / Slide / Zoom */
+.fade-in{animation: fadeIn .6s var(--ease) both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+.slide-up{animation: slideUp .6s var(--ease) both}
+@keyframes slideUp{from{opacity:0; transform: translateY(16px)}to{opacity:1; transform: translateY(0)}}
+
+.zoom-in{animation: zoomIn .55s var(--ease) both}
+@keyframes zoomIn{from{opacity:0; transform: scale(.98)}to{opacity:1; transform: scale(1)}}
+
+/* Magnetic button */
+.magnetic-btn{transform: translateZ(0)}
+
+/* Card tilt */
+.tilt{
+  transform: perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-6px);
+}
+
+/* Typing */
+.type-cursor{display:inline-block; width:10px; color: rgba(0,200,255,.95); animation: blink 1s steps(2) infinite;}
+@keyframes blink{50%{opacity:0}}
+
+/* Counter shimmer */
+.shimmer{position:relative; overflow:hidden}
+.shimmer::after{
+  content:"";
+  position:absolute;
+  top:-20%; left:-50%;
+  width:60%; height:140%;
+  background: linear-gradient(90deg, transparent, rgba(0,200,255,.25), transparent);
+  transform: rotate(12deg);
+  animation: shimmerMove 1.2s var(--ease) infinite;
+}
+@keyframes shimmerMove{to{left:120%}}
+

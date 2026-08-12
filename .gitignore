@@ -1,0 +1,11 @@
+node_modules/
+.turbo/
+.qodo/
+.next/
+.DS_Store
+dist/
+build/
+*.log
+*.glb/
+*.obj
+*.fbx
